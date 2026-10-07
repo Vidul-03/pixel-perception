@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pixel Perception | Photography</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0d0d0d;
+            color: white;
+        }
+
+        /* Navigation */
+        nav {
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            background: #111;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #ff6a00;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff6a00;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 70px;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 span {
+            color: #ff6a00;
+        }
+
+        .hero p {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #aaa;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 14px 30px;
+            background: #ff6a00;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #ff8533;
+            transform: translateY(-3px);
+        }
+
+        /* Gallery */
+        .gallery {
+            padding: 80px 8%;
+            background: #111;
+        }
+
+        .gallery h2 {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 50px;
+        }
+
+        .gallery h2 span {
+            color: #ff6a00;
+        }
+
+        .photos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .photo {
+            height: 300px;
+            background: #222;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #777;
+            transition: 0.4s;
+        }
+
+        .photo:hover {
+            transform: scale(1.03);
+            border: 2px solid #ff6a00;
+        }
+
+        /* About */
+        .about {
+            padding: 100px 15%;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 40px;
+            margin-bottom: 25px;
+        }
+
+        .about h2 span {
+            color: #ff6a00;
+        }
+
+        .about p {
+            color: #aaa;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 80px 10%;
+            background: #111;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .contact h2 span {
+            color: #ff6a00;
+        }
+
+        .contact p {
+            color: #aaa;
+        }
+
+        footer {
+            padding: 25px;
+            text-align: center;
+            background: #080808;
+            color: #666;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .photos {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">PIXEL PERCEPTION</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Home -->
+    <section class="hero" id="home">
+
+        <h1>PIXEL <span>PERCEPTION</span></h1>
+
+        <p>
+            Capturing moments. Creating perspectives.
+        </p>
+
+        <a href="#gallery" class="btn">Explore My Work</a>
+
+    </section>
+
+
+    <!-- Gallery -->
+    <section class="gallery" id="gallery">
+
+        <h2>My <span>Gallery</span></h2>
+
+        <div class="photos">
+
+           <img src="images/sunset.jpg" alt="My Photography" width="400">
+
+            <img src="images/peakcock.jpg" alt="My Photography" width="400">
+
+            <img src="images/sea.jpg" alt="My Photography" width="400">
+
+            <img src="images/Mirror.jpg" alt="My Photography" width="400">
+
+            <img src="images/sea1.jpg" alt="My Photography" width="400">
+
+            <img src="images/greens.jpg" alt="My Photography" width="400">
+
+        </div>
+
+    </section>
+
+
+    <!-- About -->
+    <section class="about" id="about">
+
+        <h2>About <span>Pixel Perception</span></h2>
+
+        <p>
+            Pixel Perception is a creative photography page focused on
+            capturing beautiful moments, unique perspectives and
+            stories through the lens.
+        </p>
+
+    </section>
+
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+
+        <h2>Let's <span>Connect</span></h2>
+
+        <p>
+            Interested in photography or collaboration?
+            Get in touch with Pixel Perception.
+        </p>
+
+        <a href="mailto:pixelperception@example.com" class="btn">
+            Contact Me
+        </a>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        © 2026 Pixel Perception. All Rights Reserved.
+    </footer>
