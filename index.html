@@ -6,6 +6,8 @@
 
     <title>Pixel Perception | Photography</title>
 
+    <link rel="icon" type="image/jpeg" href="logo.jpeg">
+
     <style>
         * {
             margin: 0;
@@ -20,15 +22,18 @@
         }
 
         /* Navigation */
-        nav {
-            height: 75px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 8%;
-            background: #111;
-            border-bottom: 1px solid #222;
-        }
+       nav {
+    height: 75px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8%;
+    background: #111;
+    border-bottom: 1px solid #222;
+}
 
         .logo {
             font-size: 25px;
@@ -42,52 +47,74 @@
             gap: 35px;
         }
 
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            transition: 0.3s;
-        }
-
+       nav ul li a {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+    position: relative;
+}
         nav ul li a:hover {
             color: #ff6a00;
         }
 
+        nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: #ff6a00;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
         /* Hero */
         .hero {
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
 
-        .hero h1 {
-            font-size: 70px;
-            letter-spacing: 3px;
-        }
+    background:
+        radial-gradient(circle at center, rgba(255, 106, 0, 0.15), transparent 45%),
+        #0d0d0d;
+}
 
+       .hero h1 {
+    font-size: 70px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 25px rgba(255, 106, 0, 0.25);
+    animation: fadeIn 1.2s ease;
+}
         .hero h1 span {
             color: #ff6a00;
         }
 
-        .hero p {
-            margin-top: 20px;
-            font-size: 20px;
-            color: #aaa;
+      .hero p {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #aaa;
+    animation: fadeIn 1.5s ease;
         }
 
         .btn {
-            display: inline-block;
-            margin-top: 35px;
-            padding: 14px 30px;
-            background: #ff6a00;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.3s;
+                display: inline-block;
+    margin-top: 35px;
+    padding: 14px 30px;
+    background: #ff6a00;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+    animation: fadeIn 1.8s ease;
         }
 
         .btn:hover {
@@ -97,9 +124,17 @@
 
         /* Gallery */
         .gallery {
-            padding: 80px 8%;
-            background: #111;
-        }
+    padding: 80px 8%;
+    background: #111;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.gallery.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
         .gallery h2 {
             text-align: center;
@@ -129,6 +164,7 @@
 .photos img:hover {
     transform: scale(1.03);
     border: 2px solid #ff6a00;
+    box-shadow: 0 10px 30px rgba(255, 106, 0, 0.25);
 }
 
         .photo {
@@ -148,14 +184,22 @@
         }
 
         /* About */
-        .about {
-            padding: 100px 15%;
-            text-align: center;
-        }
+       .about {
+    padding: 100px 15%;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+}
 
+.about.show {
+    opacity: 1;
+    transform: translateY(0);
+}
         .about h2 {
-            font-size: 40px;
-            margin-bottom: 25px;
+    font-size: 40px;
+    margin-bottom: 25px;
+    text-shadow: 0 0 20px rgba(255, 106, 0, 0.2);
         }
 
         .about h2 span {
@@ -163,17 +207,27 @@
         }
 
         .about p {
-            color: #aaa;
-            font-size: 18px;
-            line-height: 1.8;
+    color: #aaa;
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 750px;
+    margin: 0 auto;
         }
 
         /* Contact */
-        .contact {
-            padding: 80px 10%;
-            background: #111;
-            text-align: center;
-        }
+       .contact {
+    padding: 80px 10%;
+    background: #111;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.contact.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
         .contact h2 {
             font-size: 40px;
@@ -238,6 +292,51 @@
     color: white;
     cursor: pointer;
 }
+
+.viewer-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    font-size: 40px;
+    padding: 10px 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.viewer-btn:hover {
+    background: #ff6a00;
+}
+
+#prevImage {
+    left: 30px;
+}
+
+#nextImage {
+    right: 30px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.about-tagline {
+    margin-top: 30px;
+    color: #ff6a00;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
     </style>
 </head>
 
@@ -299,11 +398,14 @@
 
         <h2>About <span>Pixel Perception</span></h2>
 
-        <p>
-            Pixel Perception is a creative photography page focused on
-            capturing beautiful moments, unique perspectives and
-            stories through the lens.
-        </p>
+      <p>
+    Seeing the world through a different lens. Pixel Perception is a
+    collection of moments, perspectives and memories captured through my eyes.
+</p>
+
+<div class="about-tagline">
+    Moments. Perspectives. Memories.
+</div>
 
     </section>
 
@@ -314,8 +416,10 @@
         <h2>Let's <span>Connect</span></h2>
 
         <p>
-             📧 <a href="mailto:pixelperception24@gmail.com">pixelperception24@gmail.com</a>
-        </p>
+    📷 <a href="https://www.instagram.com/_pixel_perception_/" target="_blank">
+        @_pixel_perception_
+    </a>
+</p>
 
         <a href="mailto:pixelperception24@gmail.com" class="btn">
             Contact Me
@@ -331,7 +435,12 @@
 
     <div id="imageViewer" class="image-viewer">
     <span class="close-viewer">&times;</span>
+
+    <button id="prevImage" class="viewer-btn">&#10094;</button>
+
     <img id="viewerImage" src="" alt="Full Size Photo">
+
+    <button id="nextImage" class="viewer-btn">&#10095;</button>
 </div>
 
 <script>
@@ -340,13 +449,42 @@
     const viewerImage = document.getElementById("viewerImage");
     const closeViewer = document.querySelector(".close-viewer");
 
-    galleryImages.forEach(image => {
-        image.addEventListener("click", () => {
-            viewerImage.src = image.src;
-            imageViewer.style.display = "flex";
-        });
-    });
+    let currentImageIndex = 0;
 
+const prevImage = document.getElementById("prevImage");
+const nextImage = document.getElementById("nextImage");
+
+  galleryImages.forEach((image, index) => {
+    image.addEventListener("click", () => {
+        currentImageIndex = index;
+        viewerImage.src = image.src;
+        imageViewer.style.display = "flex";
+    });
+});
+
+prevImage.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    currentImageIndex--;
+
+    if (currentImageIndex < 0) {
+        currentImageIndex = galleryImages.length - 1;
+    }
+
+    viewerImage.src = galleryImages[currentImageIndex].src;
+});
+
+nextImage.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    currentImageIndex++;
+
+    if (currentImageIndex >= galleryImages.length) {
+        currentImageIndex = 0;
+    }
+
+    viewerImage.src = galleryImages[currentImageIndex].src;
+});
     closeViewer.addEventListener("click", () => {
         imageViewer.style.display = "none";
     });
@@ -355,6 +493,40 @@
         if (event.target === imageViewer) {
             imageViewer.style.display = "none";
         }
+    });
+
+    document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        imageViewer.style.display = "none";
+    }
+});
+
+document.addEventListener("keydown", (event) => {
+    if (imageViewer.style.display === "flex") {
+
+        if (event.key === "ArrowLeft") {
+            prevImage.click();
+        }
+
+        if (event.key === "ArrowRight") {
+            nextImage.click();
+        }
+    }
+});
+</script>
+
+<script>
+    const sections = document.querySelectorAll(".gallery, .about, .contact");
+
+    window.addEventListener("scroll", () => {
+        sections.forEach(section => {
+            const sectionPosition = section.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight * 0.85;
+
+            if (sectionPosition < screenPosition) {
+                section.classList.add("show");
+            }
+        });
     });
 </script>
 
