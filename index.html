@@ -111,11 +111,25 @@
             color: #ff6a00;
         }
 
-        .photos {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+       .photos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.photos img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: 0.4s;
+    display: block;
+}
+
+.photos img:hover {
+    transform: scale(1.03);
+    border: 2px solid #ff6a00;
+}
 
         .photo {
             height: 300px;
@@ -196,6 +210,34 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .image-viewer {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.image-viewer img {
+    max-width: 90%;
+    max-height: 85%;
+    border-radius: 10px;
+}
+
+.close-viewer {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    font-size: 45px;
+    color: white;
+    cursor: pointer;
+}
     </style>
 </head>
 
@@ -235,17 +277,17 @@
 
         <div class="photos">
 
-           <img src="images/sunset.jpg" alt="My Photography" width="400">
+           <img class="gallery-img" src="images/sunset.jpg" alt="My Photography">
 
-            <img src="images/peakcock.jpg" alt="My Photography" width="400">
+            <img class="gallery-img" src="images/peakcock.jpg" alt="My Photography">
 
-            <img src="images/sea-photo.jpg" alt="My Photography" width="400">
+            <img class="gallery-img" src="images/Sea.jpg" alt="My Photography">
 
-            <img src="images/Mirror.jpg" alt="My Photography" width="400">
+            <img class="gallery-img" src="images/Mirror.jpg" alt="My Photography">
 
-            <img src="images/sea1.jpg" alt="My Photography" width="400">
+            <img class="gallery-img" src="images/sea1.jpg" alt="My Photography">
 
-            <img src="images/greens.jpg" alt="My Photography" width="400">
+            <img class="gallery-img" src="images/greens.jpg" alt="My Photography">
 
         </div>
 
@@ -286,3 +328,35 @@
     <footer>
         © 2026 Pixel Perception. All Rights Reserved.
     </footer>
+
+    <div id="imageViewer" class="image-viewer">
+    <span class="close-viewer">&times;</span>
+    <img id="viewerImage" src="" alt="Full Size Photo">
+</div>
+
+<script>
+    const galleryImages = document.querySelectorAll(".gallery-img");
+    const imageViewer = document.getElementById("imageViewer");
+    const viewerImage = document.getElementById("viewerImage");
+    const closeViewer = document.querySelector(".close-viewer");
+
+    galleryImages.forEach(image => {
+        image.addEventListener("click", () => {
+            viewerImage.src = image.src;
+            imageViewer.style.display = "flex";
+        });
+    });
+
+    closeViewer.addEventListener("click", () => {
+        imageViewer.style.display = "none";
+    });
+
+    imageViewer.addEventListener("click", (event) => {
+        if (event.target === imageViewer) {
+            imageViewer.style.display = "none";
+        }
+    });
+</script>
+
+</body>
+    
