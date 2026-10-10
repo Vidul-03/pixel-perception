@@ -73,7 +73,7 @@ nav ul li a:hover::after {
 }
 
         /* Hero */
-        .hero {
+  .hero {
     min-height: 90vh;
     display: flex;
     flex-direction: column;
@@ -83,8 +83,13 @@ nav ul li a:hover::after {
     padding: 20px;
 
     background:
-        radial-gradient(circle at center, rgba(255, 106, 0, 0.15), transparent 45%),
-        #0d0d0d;
+        linear-gradient(rgba(13, 13, 13, 0.55), rgba(13, 13, 13, 0.75)),
+        url("images/lens-background.jpeg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
        .hero h1 {
@@ -147,24 +152,22 @@ nav ul li a:hover::after {
         }
 
        .photos {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    columns: 3;
+    column-gap: 20px;
 }
 
 .photos img {
     width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 12px;
-    transition: 0.4s;
+    height: auto;
     display: block;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    break-inside: avoid;
+    transition: transform 0.4s ease;
 }
 
 .photos img:hover {
-    transform: scale(1.03);
-    border: 2px solid #ff6a00;
-    box-shadow: 0 10px 30px rgba(255, 106, 0, 0.25);
+    transform: scale(1.02);
 }
 
         .photo {
@@ -374,21 +377,7 @@ nav ul li a:hover::after {
 
         <h2>My <span>Gallery</span></h2>
 
-        <div class="photos">
-
-           <img class="gallery-img" src="images/sunset.jpg" alt="My Photography">
-
-            <img class="gallery-img" src="images/peakcock.jpg" alt="My Photography">
-
-            <img class="gallery-img" src="images/Sea.jpg" alt="My Photography">
-
-            <img class="gallery-img" src="images/Mirror.jpg" alt="My Photography">
-
-            <img class="gallery-img" src="images/sea1.jpg" alt="My Photography">
-
-            <img class="gallery-img" src="images/greens.jpg" alt="My Photography">
-
-        </div>
+        <div class="photos"> <!-- Existing Photos --> <img class="gallery-img" src="images/sunset.jpg" alt="Sunset Photography"> <img class="gallery-img" src="images/peakcock.jpg" alt="Peacock Photography"> <img class="gallery-img" src="images/Sea.jpg" alt="Sea Photography"> <img class="gallery-img" src="images/Mirror.jpg" alt="Mirror Photography"> <img class="gallery-img" src="images/sea1.jpg" alt="Ocean Photography"> <img class="gallery-img" src="images/greens.jpg" alt="Nature Photography"> <!-- New Photos --> <img class="gallery-img" src="images/Falls.jpeg" alt="Waterfall Photography"> <img class="gallery-img" src="images/fort.jpeg" alt="Fort Photography"> <img class="gallery-img" src="images/india.jpeg" alt="India Photography"> <img class="gallery-img" src="images/micro.jpeg" alt="Macro Photography"> <img class="gallery-img" src="images/snow.jpeg" alt="Snow Photography"> <img class="gallery-img" src="images/Tomb.jpeg" alt="Tomb Photography"> <img class="gallery-img" src="images/circus.jpeg" alt="Circus Photography"> </div>
 
     </section>
 
